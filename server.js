@@ -1,50 +1,61 @@
 $(function () {
 
-    $.get("http://localhost:8080/freeapp", function (data,status) {
-        console.log(status);
+    $.get("http://localhost:8080/freeapp", function (data, status) {
+        console.log("freeApp: " + status);
         console.log("Free App");
         data.forEach(element => {
-            var FreeApp = `<div class="col-sm-2">
+            var FreeApp = `<div class="col-sm-2" onclick="showDetailApp('${element.app}')">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">${element.app}</h5>
-                    <h7>${element.genres}</h7><br><hr>
-                    <h7 class="card-title">Rating ${element.rating} &emsp;&emsp;&emsp;&emsp; THB ${element.price}</h7>
-                    <a href="#" class="btn btn-primary text-right">DETAIL</a>
+                    <h7 class="card-title">${element.genres}</h7><hr>
+                    <div class="text-right">
+                        <h7 class="card-title">Rating ${element.rating} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                         THB ${element.price}</h7><p></p>
+                    </div>
                 </div>
             </div>
-        </div>`;    
+        </div>`;
 
-        $("#freeApp").append(FreeApp);
+            $("#freeApp").append(FreeApp);
         });
     });
 
-    $.get("http://localhost:8080/recommended", function (data,status) {
-        console.log(status);
+    $.get("http://localhost:8080/recommended", function (data, status) {
+        console.log("Recommended: " + status);
         console.log("Recommended App");
         data.forEach(element => {
-            var Recommended = `<div class="col-sm-2">
+            var Recommended = `<div class="col-sm-2" onclick="showDetailApp('${element.app}')">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">${element.app}</h5><hr>
-                    <h5 class="card-title">Rating ${element.rating} &emsp;&emsp;&emsp;&emsp; THB ${element.price}</h5>
-                    <a href="#" class="btn btn-primary text-right">DETAIL</a>
+                    <h5 class="card-title">${element.app}</h5>
+                    <h7 class="card-title">${element.genres}</h7><hr>
+                    <div class="text-right">
+                        <h7 class="card-title">Rating ${element.rating} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                         THB ${element.price}</h7><p></p>
+                    </div>
                 </div>
             </div>
-        </div>`;    
+        </div>`;
 
-        $("#recommended").append(Recommended);
+            $("#recommended").append(Recommended);
         });
     });
 
-    $.get("http://localhost:8080/groupbyCategory", function (data,status) {
+    $.get("http://localhost:8080/groupbyCategory", function (data, status) {
         console.log(status);
         console.log("groupbyCategory");
         data.forEach(element => {
-            var groupbyCategory = `<a class="dropdown-item" href="#">${element.category}</a>`;    
+            var groupbyCategory = `<a class="dropdown-item" href="#">${element.category}</a>`;
 
-        $("#CateDropdown").append(groupbyCategory);
+            $("#CateDropdown").append(groupbyCategory);
         });
     });
 
 });
+
+function showDetailApp(nameApp) {
+    name = nameApp;
+    console.log("App name: " + name);
+
+}
