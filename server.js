@@ -1,16 +1,41 @@
 $(function () {
 
     // searchby
+    var search;
     $("#search_btn").click(function () {
-        var search = $("#search").val();
-        console.log(search);
-        window.location.href = "search.html";
+        search = $("#search").val();
+        $("#jumbotron").empty();
+        var searchShow = `<h1 class="display-4">You're search ${search}</h1>
+        <hr class="my-4">
+        <div class="row" id="searchApp"></div>`;
+        $("#jumbotron").append(searchShow);
 
+        $.get(`http://localhost:8080/searchbyApp/${search}`, function (data, status) {
+        console.log("groupbyApp: "+status);
+        data.forEach(element => {
+            var groupbyApp = `<div class="col-sm-2" 
+            onclick="showDetailApp('${element.app}')">
+            <div class="card">
+                <div class="card-body">
+                    <div><h5 class="card-title">${element.app}</h5></div>
+                    <h7 class="card-title">${element.genres}</h7><hr>
+                    <div class="text-right">
+                        <h7 class="card-title">Rating ${element.rating}<br>
+                         THB ${element.price}</h7><p></p>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+            $("#searchApp").append(groupbyApp);
+        });
+    });
     });
 
+    
+
     $.get("http://localhost:8080/searchbyCategory", function (data, status) {
-        console.log(status);
-        console.log("groupbyCategory");
+        console.log("groupbyCategory: "+status);
         data.forEach(element => {
             var groupbyCategory = `<a class="dropdown-item" href="#">${element.category}</a>`;
 
@@ -19,8 +44,7 @@ $(function () {
     });
 
     $.get("http://localhost:8080/searchbyRating", function (data, status) {
-        console.log(status);
-        console.log("groupbyCategory");
+        console.log("groupbyRating: "+status);
         data.forEach(element => {
             var groupbyCategory = `<a class="dropdown-item" href="#">${element.rating}</a>`;
 
@@ -29,8 +53,7 @@ $(function () {
     });
 
     $.get("http://localhost:8080/searchbyType", function (data, status) {
-        console.log(status);
-        console.log("groupbyCategory");
+        console.log("groupbyType: "+status);
         data.forEach(element => {
             var groupbyCategory = `<a class="dropdown-item" href="#">${element.type}</a>`;
 
