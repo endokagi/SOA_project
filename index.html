@@ -27,6 +27,24 @@
         <div class="dropdown">
             <ul class="navbar-nav mr-auto scrollable-menu" role="menu">
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Price</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button class="dropdown-item" onclick="SearchBy('price','5.00')">
+                            Lower than 5 USD</button>
+                        <button class="dropdown-item" onclick="SearchBy('price','4.00')">
+                            Lower than 4 USD</button>
+                        <button class="dropdown-item" onclick="SearchBy('price','3.00')">
+                            Lower than 3 USD</button>
+                        <button class="dropdown-item" onclick="SearchBy('price','2.00')">
+                            Lower than 2 USD</button>
+                        <button class="dropdown-item" onclick="SearchBy('price','1.00')">
+                            Lower than 1 USD</button>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="RatingDropdown"></div>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
@@ -36,8 +54,21 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Rating
-                    </a>
+                        Rating</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button class="dropdown-item" onclick="SearchBy('rating','5')">
+                            5</button>
+                        <button class="dropdown-item" onclick="SearchBy('rating','4')">
+                            4</button>
+                        <button class="dropdown-item" onclick="SearchBy('rating','3')">
+                            3</button>
+                        <button class="dropdown-item" onclick="SearchBy('rating','2')">
+                            2</button>
+                        <button class="dropdown-item" onclick="SearchBy('rating','1')">
+                            1</button>
+                        <button class="dropdown-item" onclick="SearchBy('rating','null')">
+                            null</button>
+                    </div>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="RatingDropdown"></div>
                 </li>
                 <li class="nav-item dropdown">

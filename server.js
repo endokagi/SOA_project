@@ -23,7 +23,7 @@ $(function () {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ $(function () {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -68,15 +68,15 @@ $(function () {
         });
     });
 
-    $.get("http://localhost:8080/searchbyRating", function (data, status) {
-        console.log("groupbyRating: " + status);
-        data.forEach(element => {
-            var groupbyCategory = `<button class="dropdown-item" onclick="SearchBy('rating','${element.rating}')">
-            ${element.rating}</button>`;
+    // $.get("http://localhost:8080/searchbyRating", function (data, status) {
+    //     console.log("groupbyRating: " + status);
+    //     data.forEach(element => {
+    //         var groupbyCategory = `<button class="dropdown-item" onclick="SearchBy('rating','${element.rating}')">
+    //         ${element.rating}</button>`;
 
-            $("#RatingDropdown").append(groupbyCategory);
-        });
-    });
+    //         $("#RatingDropdown").append(groupbyCategory);
+    //     });
+    // });
 
     $.get("http://localhost:8080/searchbyType", function (data, status) {
         console.log("groupbyType: " + status);
@@ -99,7 +99,7 @@ $(function () {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ $(function () {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@ $(function () {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@ $(function () {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@ function SearchBy(column, value) {
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
                         <h7 class="card-title">Rating ${element.rating}&#9734;<br>
-                         THB ${element.price}</h7><p></p>
+                         USD ${element.price}</h7><p></p>
                     </div>
                 </div>
             </div>
@@ -271,7 +271,7 @@ function showDetailApp(nameApp) {
         data.forEach(element => {
             var reviewShoww = `<div class="card">
                     <div class="card-header">
-                    Review from user
+                    Review from user (${element.sentiment})
                     </div>
                     <div class="card-body">
                     ${element.translated_reviews}
