@@ -1,6 +1,6 @@
 $(function () {
 
-    // searchby
+    // searchbyApp
     var search;
     $("#search_btn").click(function () {
         $("#jumbotron").empty();
@@ -58,12 +58,12 @@ $(function () {
         }
     });
 
-
-
+    // searchby
     $.get("http://localhost:8080/searchbyCategory", function (data, status) {
         console.log("groupbyCategory: " + status);
         data.forEach(element => {
-            var groupbyCategory = `<a class="dropdown-item" href="#">${element.category}</a>`;
+            var groupbyCategory = `<button class="dropdown-item" onclick="SearchBy('category','${element.category}')">
+            ${element.category}</button>`;
 
             $("#CateDropdown").append(groupbyCategory);
         });
@@ -72,7 +72,8 @@ $(function () {
     $.get("http://localhost:8080/searchbyRating", function (data, status) {
         console.log("groupbyRating: " + status);
         data.forEach(element => {
-            var groupbyCategory = `<a class="dropdown-item" href="#">${element.rating}</a>`;
+            var groupbyCategory = `<button class="dropdown-item" onclick="SearchBy('rating','${element.rating}')">
+            ${element.rating}</button>`;
 
             $("#RatingDropdown").append(groupbyCategory);
         });
@@ -81,7 +82,8 @@ $(function () {
     $.get("http://localhost:8080/searchbyType", function (data, status) {
         console.log("groupbyType: " + status);
         data.forEach(element => {
-            var groupbyCategory = `<a class="dropdown-item" href="#">${element.type}</a>`;
+            var groupbyCategory = `<button class="dropdown-item" onclick="SearchBy('type','${element.type}')">
+            ${element.type}</button>`;
 
             $("#TypeDropdown").append(groupbyCategory);
         });
@@ -196,6 +198,41 @@ $(function () {
 
 });
 
+// function searchby
+function SearchBy(column, value) {
+    Column = column;
+    Value = value;
+    console.log(Column + " and " + Value);
+
+    $("#jumbotron").empty();
+
+    var searchby = `<h1 class="display-4">Search by ${Column} {Group by: ${Value}} </h1>
+    <hr class="my-4">
+    <div class="row" id="searchApp"></div>`;
+    $("#jumbotron").append(searchby);
+
+    $.get(`http://localhost:8080/${Column}/${Value}`, function (data, status) {
+        console.log(`${Column} and ${Value}: ` + status);
+        data.forEach(element => {
+            var Searchby = `<div class="col-sm-2" 
+            onclick="showDetailApp('${element.app}')">
+            <div class="card" style="width:220px; height:250px">
+                <div class="card-body">
+                    <h5 class="card-title">${element.app}</h5>
+                    <h7 class="card-title">${element.genres}</h7><hr>
+                    <div class="text-right">
+                        <h7 class="card-title">Rating ${element.rating}&#9734;<br>
+                         THB ${element.price}</h7><p></p>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+            $("#searchApp").append(Searchby);
+        });
+    });
+}
+
 // reviews
 function showDetailApp(nameApp) {
     name = nameApp;
@@ -210,7 +247,7 @@ function showDetailApp(nameApp) {
         </div>`;
     $("#jumbotron").append(searchShow);
 
-    $.get(`http://localhost:8080/searchbyApp/${name}`, function (data, status) {
+    $.get(`http://localhost:8080/selectApp/${name}`, function (data, status) {
         console.log("groupbyApp: " + status);
         data.forEach(element => {
             var reviewShow = `<div class="card">
@@ -230,7 +267,7 @@ function showDetailApp(nameApp) {
         });
     });
 
-    $.get(`http://localhost:8080/review/${name}`, function (data, status) {
+    $.get(`http://localhost:8080/reviewApp/${name}`, function (data, status) {
         console.log("reviewsApp: " + status);
         data.forEach(element => {
             var reviewShoww = `<div class="card">
