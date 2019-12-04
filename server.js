@@ -15,10 +15,9 @@ $(function () {
             $.get(`http://localhost:8080/findapp`, function (data, status) {
                 console.log("findApp: " + status);
                 data.forEach(element => {
-                    var groupbyApp = `<div class="col-sm-2" 
-                    onclick="showDetailApp('${element.app}')">
+                    var groupbyApp = `<div class="col-sm-2">
                     <div class="card" style="width:220px; height:250px">
-                    <div class="card-body">
+                    <div class="card-body" onclick="showDetailApp('${element.app}')">
                     <h5>${element.app}</h5>
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
@@ -91,10 +90,9 @@ $(function () {
     $.get("http://localhost:8080/topfreeapp", function (data, status) {
         console.log("freeApp: " + status);
         data.forEach(element => {
-            var FreeApp = `<div class="col-sm-2" 
-            onclick="showDetailApp('${element.app}')">
+            var FreeApp = `<div class="col-sm-2">
             <div class="card" style="width:220px; height:250px">
-                <div class="card-body">
+                <div class="card-body" onclick="showDetailApp('${element.app}')">
                     <h5 class="card-title">${element.app}</h5>
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
@@ -120,10 +118,9 @@ $(function () {
         $.get("http://localhost:8080/freeapp", function (data, status) {
             console.log("freeApp: " + status);
             data.forEach(element => {
-                var FreeApp = `<div class="col-sm-2" 
-            onclick="showDetailApp('${element.app}')">
+                var FreeApp = `<div class="col-sm-2">
             <div class="card" style="width:220px; height:250px">
-                <div class="card-body">
+                <div class="card-body" onclick="showDetailApp('${element.app}')">
                     <h5 class="card-title">${element.app}</h5>
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
@@ -145,10 +142,9 @@ $(function () {
     $.get("http://localhost:8080/topRecommended", function (data, status) {
         console.log("Recommended App: " + status);
         data.forEach(element => {
-            var Recommended = `<div class="col-sm-2" 
-            onclick="showDetailApp('${element.app}')">
+            var Recommended = `<div class="col-sm-2">
             <div class="card" style="width:220px; height:250px">
-                <div class="card-body">
+                <div class="card-body" onclick="showDetailApp('${element.app}')">
                     <h5 class="card-title">${element.app}</h5>
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
@@ -174,10 +170,9 @@ $(function () {
         $.get("http://localhost:8080/Recommended", function (data, status) {
             console.log("Recommended App: " + status);
             data.forEach(element => {
-                var Recommended = `<div class="col-sm-2" 
-            onclick="showDetailApp('${element.app}')">
+                var Recommended = `<div class="col-sm-2">
             <div class="card" style="width:220px; height:250px">
-                <div class="card-body">
+                <div class="card-body" onclick="showDetailApp('${element.app}')">
                     <h5 class="card-title">${element.app}</h5>
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
@@ -213,10 +208,9 @@ function SearchBy(column, value) {
     $.get(`http://localhost:8080/${Column}/${Value}`, function (data, status) {
         console.log(`${Column} and ${Value}: ` + status);
         data.forEach(element => {
-            var Searchby = `<div class="col-sm-2 text-right" 
-            onclick="showDetailApp('${element.app}')">
+            var Searchby = `<div class="col-sm-2 text-right">
             <div class="card" style="width:220px; height:250px">
-                <div class="card-body">
+                <div class="card-body" onclick="showDetailApp('${element.app}')">
                     <h5 class="card-title">${element.app}</h5>
                     <h7 class="card-title">${element.genres}</h7><hr>
                     <div class="text-right">
