@@ -2,3 +2,8 @@ img{
     width: 150px;
     height: 150px;
 }
+
+.card-img-left{
+    width: 40px;
+    height: 40px;
+}
