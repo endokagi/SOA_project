@@ -12,7 +12,6 @@ $(function () {
         <div class="row" id="searchApp"></div>`;
         $("#jumbotron").append(searchShow);
         if (search == "") {
-
             $.get(`http://localhost:8080/findapp`, function (data, status) {
                 console.log("findApp: " + status);
                 data.forEach(element => {
@@ -214,7 +213,7 @@ function SearchBy(column, value) {
     $.get(`http://localhost:8080/${Column}/${Value}`, function (data, status) {
         console.log(`${Column} and ${Value}: ` + status);
         data.forEach(element => {
-            var Searchby = `<div class="col-sm-2" 
+            var Searchby = `<div class="col-sm-2 text-right" 
             onclick="showDetailApp('${element.app}')">
             <div class="card" style="width:220px; height:250px">
                 <div class="card-body">
